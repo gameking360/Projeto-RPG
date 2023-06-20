@@ -8,8 +8,19 @@ namespace Projeto_RPG
 {
     internal class Personagem
     {
-        static void Main(string[] args)
-        {
-        }
+        public string Nome { get; set ; }
+        public int PontosVida { get; set ; }
+        public int Forca { get; set ; }
+        public int Defesa { get; set ; }
+
+        public Personagem() { }
+
+        public void Atacar() {  }
+        public void Fugir() { }
+        public void Defender() { }
+        public void UsarHabilidade() { }
+
+
+
     }
 }
