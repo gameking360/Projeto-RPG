@@ -47,6 +47,10 @@
     <Compile Include="Personagens\Classes\Arqueiro.cs" />
     <Compile Include="Personagens\Classes\Guerreiro.cs" />
     <Compile Include="Personagens\Classes\Mago.cs" />
+    <Compile Include="Personagens\Habilidades\Efeito.cs" />
+    <Compile Include="Personagens\Habilidades\Enums\Tipos.cs" />
+    <Compile Include="Personagens\Habilidades\Habilidade.cs" />
+    <Compile Include="Personagens\Habilidades\Magia.cs" />
     <Compile Include="Personagens\Inimigo\Inimigo.cs" />
     <Compile Include="Personagens\Personagem.cs" />
     <Compile Include="Program.cs" />
