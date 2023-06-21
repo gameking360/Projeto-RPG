@@ -47,6 +47,7 @@
     <Compile Include="Personagens\Classes\Arqueiro.cs" />
     <Compile Include="Personagens\Classes\Guerreiro.cs" />
     <Compile Include="Personagens\Classes\Mago.cs" />
+    <Compile Include="Personagens\Inimigo\Inimigo.cs" />
     <Compile Include="Personagens\Personagem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
