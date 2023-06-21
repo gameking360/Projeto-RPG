@@ -43,7 +43,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Personagem\Personagem.cs" />
+    <Compile Include="Jogo.cs" />
+    <Compile Include="Personagens\Classes\Arqueiro.cs" />
+    <Compile Include="Personagens\Classes\Guerreiro.cs" />
+    <Compile Include="Personagens\Classes\Mago.cs" />
+    <Compile Include="Personagens\Personagem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

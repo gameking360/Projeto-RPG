@@ -10,7 +10,9 @@ namespace Projeto_RPG
     {
         static void Main(string[] args)
         {
-            
+            Jogo jogo = new Jogo();
+            jogo.IniciarJogo();
+            Console.ReadKey();
         }
     }
 }
