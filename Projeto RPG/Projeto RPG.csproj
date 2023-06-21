@@ -43,6 +43,10 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Habilidades\Efeito.cs" />
+    <Compile Include="Habilidades\Enums\Tipos.cs" />
+    <Compile Include="Habilidades\Habilidade.cs" />
+    <Compile Include="Habilidades\Magia.cs" />
     <Compile Include="Personagem\Personagem.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projeto_RPG.Habilidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,7 +14,18 @@ namespace Projeto_RPG
         public int Forca { get; set ; }
         public int Defesa { get; set ; }
 
+        public List<Habilidade> Habilidades { get; set ; }
+
         public Personagem() { }
+
+        public Personagem(string nome, int pontosVida, int forca, int defesa, List<Habilidade> habilidades)
+        {
+            Nome = nome;
+            PontosVida = pontosVida;
+            Forca = forca;
+            Defesa = defesa;
+            Habilidades = habilidades;
+        }
 
         public void Atacar() {  }
         public void Fugir() { }
@@ -21,6 +33,9 @@ namespace Projeto_RPG
         public void UsarHabilidade() { }
 
 
-
+        public void AdicionarHabilidade(Habilidade habilidade)
+        {
+            this.Habilidades.Add(habilidade);
+        }
     }
 }
