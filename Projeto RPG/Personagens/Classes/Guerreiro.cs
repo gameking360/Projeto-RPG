@@ -18,9 +18,8 @@ namespace Projeto_RPG.Personagens.Classes
         {
             Nome = nome;
             PontosVida = 100;
-            Forca = 70;
-            Defesa = 30;
-            Destreza = 30;
+            Forca = 50;
+            Defesa = 50;
         }
 
         public override void Atacar() { }

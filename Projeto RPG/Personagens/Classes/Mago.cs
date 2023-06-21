@@ -12,15 +12,15 @@ namespace Projeto_RPG.Personagens.Classes
         public override int PontosVida { get; set; }
         public override int Forca { get; set; }
         public override int Defesa { get; set; }
-        public int Destreza { get; set; }
+        public int PontosMagia { get; set; }
 
         public Mago(string nome)
         {
             Nome = nome;
             PontosVida = 100;
-            Forca = 70;
+            Forca = 30;
             Defesa = 30;
-            Destreza = 30;
+            PontosMagia = 100;
         }
 
         public override void Atacar() { }
