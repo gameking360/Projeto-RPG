@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projeto_RPG.Geral;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,6 +13,9 @@ namespace Projeto_RPG
         {
             Jogo jogo = new Jogo();
             jogo.IniciarJogo();
+            Mundo.Criacao();
+            
+
             Console.ReadKey();
         }
     }

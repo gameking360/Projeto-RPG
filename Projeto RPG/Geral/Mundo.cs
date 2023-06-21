@@ -11,7 +11,7 @@ namespace Projeto_RPG.Geral
     internal class Mundo
     {
         
-        public static  void Criacao()
+        public static void Criacao()
         {
             Random r = new Random();
 
@@ -21,6 +21,9 @@ namespace Projeto_RPG.Geral
             Inimigo i2 = new Inimigo("Dragão", 60, 60, 50, 50, (Tipos)r.Next(1, 5), 15);
             Inimigo i3 = new Inimigo("Rei dos Dragões", 100, 100, 75, 75, (Tipos)r.Next(1, 5), 30);
             i1.Inimigos = new List<Inimigo>();
+
+            Console.WriteLine(i1.Nome + " " + i1.Tipo); 
+
             //os outros inimigos só são adicionados na lista após o personagem atingir um nível determinado
 
 

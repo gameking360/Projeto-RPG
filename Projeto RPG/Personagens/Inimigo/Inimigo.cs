@@ -7,8 +7,10 @@ using System.Threading.Tasks;
 
 namespace Projeto_RPG.Personagens.Inimigo
 {
+    
     internal class Inimigo : Personagem
     {
+
         public  Tipos Tipo { get; set; }
         public int RecompensaXP { get; set; }
         public List<Inimigo> Inimigos { get; set; }
@@ -30,8 +32,11 @@ namespace Projeto_RPG.Personagens.Inimigo
 
         public override void Defender() { }
 
-        public override void Fugir() { }
-
-        public override void CalcularDano() { }
+        public override void CalcularDano(Personagem atacado)
+        {
+            Random r = new Random();
+            
+            int dano = (int) (((double)Forca *  r.NextDouble()) - (double) atacado.Defesa);
+        }
     }
 }

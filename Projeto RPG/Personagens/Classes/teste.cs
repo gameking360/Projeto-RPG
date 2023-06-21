@@ -24,7 +24,7 @@ namespace Projeto_RPG.Personagens.Classes
             throw new NotImplementedException();
         }
 
-        public override void CalcularDano()
+        public override void CalcularDano(Personagem atacado)
         {
             throw new NotImplementedException();
         }

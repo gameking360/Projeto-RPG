@@ -23,11 +23,12 @@ namespace Projeto_RPG
         }
 
         public abstract void Atacar();
-        public abstract void Fugir();
+        public virtual void Fugir() { }
         public abstract void Defender();
         public abstract void UsarHabilidade();
-        public abstract void CalcularDano();
+        public abstract void CalcularDano(Personagem atacado);
 
         
+
     }
 }

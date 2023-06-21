@@ -12,6 +12,6 @@ namespace Projeto_RPG.Personagens.Habilidades.Enums
         Gelo = 2,
         Eletricidade = 3,
         Grama = 4,
-        Água = 5,
+        Água = 5
     }
 }
