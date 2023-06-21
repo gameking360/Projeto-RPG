@@ -14,6 +14,7 @@ namespace Projeto_RPG.Habilidades
         public Magia(string nome,Tipos tipo, Tipos fraqueza, Efeito efeito, int dano, int custo) : base(nome, tipo, fraqueza, efeito, dano)
         {
             this.Custo = custo;
+            
         }
     }
 }
