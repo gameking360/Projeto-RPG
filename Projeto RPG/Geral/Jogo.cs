@@ -24,7 +24,11 @@ namespace Projeto_RPG
             {
                 Console.Clear();
                 Console.WriteLine("Escolha a sua classe:");
-                Console.WriteLine("1. Guerreiro\n2. Arqueiro\n3. Mago");
+                Console.WriteLine("|============|");
+                Console.WriteLine("|1. Guerreiro|");
+                Console.WriteLine("|2. Arqueiro |");
+                Console.WriteLine("|  3. Mago   |");
+                Console.WriteLine("|============|");
                 int op = int.Parse(Console.ReadLine());
                 switch (op)
                 {
@@ -47,6 +51,7 @@ namespace Projeto_RPG
                 }
             } while (!check);
             Console.WriteLine("Personagem criado com sucesso!");
+
         }
     }
 }

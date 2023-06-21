@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projeto_RPG.Personagens.Habilidades.Enums;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,17 +9,15 @@ namespace Projeto_RPG.Personagens.Inimigo
 {
     internal class Inimigo : Personagem
     {
-        public override string Nome { get; set; }
-        public override int PontosVida { get; set; }
-        public override int Forca { get; set; }
-        public override int Defesa { get; set; }
-        public  string Tipo { get; set; }
+        public  Tipos Tipo { get; set; }
         public int RecompensaXP { get; set; }
+        public List<Inimigo> Inimigos { get; set; }
 
-        public Inimigo(string nome, int pontosvida, int forca, int defesa, string tipo, int recompensaXP)
+        public Inimigo(string nome, int pontosVidaAtual, int pontosVidaMax, int forca, int defesa, Tipos tipo, int recompensaXP)
         {
             Nome = nome;
-            PontosVida = pontosvida;
+            PontosVidaAtual = pontosVidaAtual;
+            PontosVidaMax = pontosVidaMax;
             Forca = forca;
             Defesa = defesa;
             Tipo = tipo;
@@ -32,5 +31,7 @@ namespace Projeto_RPG.Personagens.Inimigo
         public override void Defender() { }
 
         public override void Fugir() { }
+
+        public override void CalcularDano() { }
     }
 }

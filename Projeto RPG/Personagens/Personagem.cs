@@ -8,19 +8,26 @@ namespace Projeto_RPG
 {
     internal abstract class Personagem
     {
-        public abstract string Nome { get; set ; }
-        public abstract int PontosVida { get; set ; }
-        public abstract int Forca { get; set ; }
-        public abstract int Defesa { get; set ; }
+        public string Nome { get; set ; }
+        public int PontosVidaAtual { get; set ; }
+        public int PontosVidaMax { get; set ; }
+        public int Forca { get; set ; }
+        public int Defesa { get; set ; }
 
         public Personagem() { }
+
+        public Personagem(string nome)
+        {
+            Nome = nome;
+            
+        }
 
         public abstract void Atacar();
         public abstract void Fugir();
         public abstract void Defender();
         public abstract void UsarHabilidade();
+        public abstract void CalcularDano();
 
-
-
+        
     }
 }

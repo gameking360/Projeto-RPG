@@ -43,10 +43,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Jogo.cs" />
+    <Compile Include="Geral\Batalha.cs" />
+    <Compile Include="Geral\Jogo.cs" />
+    <Compile Include="Geral\Mundo.cs" />
     <Compile Include="Personagens\Classes\Arqueiro.cs" />
     <Compile Include="Personagens\Classes\Guerreiro.cs" />
     <Compile Include="Personagens\Classes\Mago.cs" />
+    <Compile Include="Personagens\Classes\teste.cs" />
     <Compile Include="Personagens\Habilidades\Efeito.cs" />
     <Compile Include="Personagens\Habilidades\Enums\Tipos.cs" />
     <Compile Include="Personagens\Habilidades\Habilidade.cs" />

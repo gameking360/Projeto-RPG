@@ -6,7 +6,12 @@ using System.Threading.Tasks;
 
 namespace Projeto_RPG.Personagens.Habilidades.Enums
 {
-    internal class Tipos
+    internal enum Tipos : int
     {
+        Fogo = 1,
+        Gelo = 2,
+        Eletricidade = 3,
+        Grama = 4,
+        Água = 5,
     }
 }

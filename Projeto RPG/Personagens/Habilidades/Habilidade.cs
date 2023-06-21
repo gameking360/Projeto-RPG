@@ -24,5 +24,6 @@ namespace Projeto_RPG.Personagens.Habilidades
             Efeito = efeito;
             Dano = dano;
         }
+       
     }
 }

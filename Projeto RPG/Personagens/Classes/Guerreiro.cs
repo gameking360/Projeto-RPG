@@ -8,16 +8,11 @@ namespace Projeto_RPG.Personagens.Classes
 {
     internal class Guerreiro : Personagem
     {
-        public override string Nome { get; set; }
-        public override int PontosVida { get; set; }
-        public override int Forca { get; set; }
-        public override int Defesa { get; set; }
-        public int Destreza { get; set; }
-
-        public Guerreiro(string nome)
+        public Guerreiro(string nome) : base (nome)
         {
             Nome = nome;
-            PontosVida = 100;
+            PontosVidaMax = 100;
+            PontosVidaAtual = PontosVidaMax;
             Forca = 50;
             Defesa = 50;
         }
@@ -29,5 +24,7 @@ namespace Projeto_RPG.Personagens.Classes
         public override void Defender() { }
 
         public override void Fugir() { }
+
+        public override void CalcularDano() { }
     }
 }
