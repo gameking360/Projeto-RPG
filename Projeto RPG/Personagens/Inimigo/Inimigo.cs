@@ -30,13 +30,25 @@ namespace Projeto_RPG.Personagens.Inimigo
 
         public override void UsarHabilidade() { }
 
-        public override void Defender() { }
+        public override void Defender()
+        {
+            Defesa += Forca/2;
+        }
 
         public override void CalcularDano(Personagem atacado)
         {
             Random r = new Random();
+
+            int dano = (int)((double)Forca * (1 + r.NextDouble()));
+            int critico = r.Next(1, 20);
+
+            if(critico == 20)
+            {
+                dano += (int) (0.5 *  (double) dano);
+            }
+
+            int dano_final = dano - atacado.Defesa;
             
-            int dano = (int) (((double)Forca *  r.NextDouble()) - (double) atacado.Defesa);
         }
     }
 }

@@ -13,9 +13,9 @@ namespace Projeto_RPG.Personagens.Habilidades
 
         public int RodadasAfetadas { get; set; }
 
-        public int Quantidade { get; set; }
+        public double Quantidade { get; set; }
 
-        public Efeito(string nome, string descricao, int rodadas, int quantidade)
+        public Efeito(string nome, string descricao, int rodadas, double quantidade)
         {
             Nome = nome;
             Descricao = descricao;

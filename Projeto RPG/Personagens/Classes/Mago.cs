@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Projeto_RPG.Personagens.Habilidades;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,7 +9,9 @@ namespace Projeto_RPG.Personagens.Classes
 {
     internal class Mago : Personagem
     {        
-        public int PontosMagia { get; set; }
+        public int PontosMagiaMax { get; set; }
+        public int PontosMagiaAtual { get; set; }
+        public List<Magia> Magias { get; set; }
 
         public Mago(string nome) : base(nome)
         {
@@ -17,7 +20,9 @@ namespace Projeto_RPG.Personagens.Classes
             PontosVidaAtual = PontosVidaMax;
             Forca = 30;
             Defesa = 30;
-            PontosMagia = 100;
+            PontosMagiaMax = 100;
+            PontosMagiaAtual = PontosMagiaMax;
+            Magias = new List<Magia>();
         }
 
         public override void Atacar() { }

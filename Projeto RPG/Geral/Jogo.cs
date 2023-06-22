@@ -15,6 +15,7 @@ namespace Projeto_RPG
             CriarPersonagem();
         }
 
+        public void AcaoInimigo() { }
         public void CriarPersonagem()
         {
             Console.WriteLine("Qual será o nome do seu personagem?");

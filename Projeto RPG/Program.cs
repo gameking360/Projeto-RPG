@@ -13,8 +13,10 @@ namespace Projeto_RPG
         {
             Jogo jogo = new Jogo();
             jogo.IniciarJogo();
-            Mundo.Criacao();
-            
+            Mundo mundo = new Mundo();
+            Random r = new Random();
+            Console.WriteLine(r.NextDouble());
+
 
             Console.ReadKey();
         }
