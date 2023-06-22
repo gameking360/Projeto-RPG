@@ -19,29 +19,36 @@ namespace Projeto_RPG.Personagens.Classes
 
         }
 
-        public override void Atacar()
+        public override void Atacar(Personagem inimigo)
         {
-            throw new NotImplementedException();
+            base.Atacar(inimigo);
         }
 
-        public override void CalcularDano(Personagem atacado)
+        public override int CalcularDano(Personagem atacado)
         {
-            throw new NotImplementedException();
+            return base.CalcularDano(atacado);
         }
 
         public override void Defender()
         {
-            throw new NotImplementedException();
+            base.Defender();
         }
 
-        public override void Fugir()
+        public override void Fugir(Personagem Fujao)
         {
-            throw new NotImplementedException();
+            base.Fugir(Fujao);
         }
 
-        public override void UsarHabilidade()
+        public override void UsarHabilidade(Personagem inimigo)
         {
-            throw new NotImplementedException();
+            base.UsarHabilidade(inimigo);
         }
+
+        public override void Status()
+        {
+            throw new NotImplementedException();    
+        }
+
+        public override void SubirNivel() { }
     }
 }

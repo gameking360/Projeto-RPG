@@ -25,16 +25,49 @@ namespace Projeto_RPG.Personagens.Classes
             Magias = new List<Magia>();
         }
 
-        public override void Atacar() { }
+        public override void Atacar(Personagem inimigo)
+        {
+            base.Atacar(inimigo);
+        }
 
-        public override void UsarHabilidade() { }
+        public override void UsarHabilidade(Personagem inimigo)
+        {
+            base.UsarHabilidade(inimigo);
+        }
 
         public void UsarMagia() { }
 
-        public override void Defender() { }
+        public override void Defender()
+        {
+            base.Defender();
+        }
 
-        public override void Fugir() { }
+        public override void Fugir(Personagem Fugitivo)
+        {
+            base.Fugir(Fugitivo);
+        }
 
-        public override void CalcularDano(Personagem atacado) { }
+        public override void SubirNivel() 
+        {
+            base.SubirNivel();
+        }
+
+        public override void Status()
+        {
+            Console.WriteLine("========================");
+            Console.WriteLine($" Nome: {Nome}. Mago nível {Nivel}");
+            Console.WriteLine(" Vida: ");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{PontosVidaAtual}/{PontosVidaMax}");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write($" Mana: ");
+            Console.ForegroundColor = ConsoleColor.Blue;
+            Console.WriteLine($"{ PontosMagiaAtual}/{ PontosMagiaMax}");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine($" Força: {Forca}");
+            Console.WriteLine("========================");
+            Console.ReadKey();
+
+        }
     }
 }

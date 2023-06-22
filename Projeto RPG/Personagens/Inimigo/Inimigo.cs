@@ -26,28 +26,24 @@ namespace Projeto_RPG.Personagens.Inimigo
             RecompensaXP = recompensaXP;
         }
 
-        public override void Atacar() { }
+        public override void Atacar(Personagem inimigo)
+        {
+            base.Atacar(inimigo);
+        }
 
-        public override void UsarHabilidade() { }
+        public override void UsarHabilidade(Personagem inimigo)
+        {
+            base.UsarHabilidade(inimigo);
+        }
 
         public override void Defender()
         {
-            Defesa += Forca/2;
+            base.Defender();
         }
 
-        public override void CalcularDano(Personagem atacado)
+        public override void Status()
         {
-            Random r = new Random();
-
-            int dano = (int)((double)Forca * (1 + r.NextDouble()));
-            int critico = r.Next(1, 20);
-
-            if(critico == 20)
-            {
-                dano += (int) (0.5 *  (double) dano);
-            }
-
-            int dano_final = dano - atacado.Defesa;
+            Console.WriteLine($"Nome: {Nome} \nVida: {PontosVidaAtual}/{PontosVidaMax}");
             
         }
     }

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -11,11 +12,13 @@ namespace Projeto_RPG
     {
         static void Main(string[] args)
         {
-            Jogo jogo = new Jogo();
-            jogo.IniciarJogo();
             Mundo mundo = new Mundo();
-            Random r = new Random();
-            Console.WriteLine(r.NextDouble());
+            Jogo jogo = new Jogo(mundo);
+            Console.Title = "LEGENDS OF MUSTAFHAR";
+            Console.ForegroundColor = ConsoleColor.DarkYellow; 
+            jogo.IniciarJogo();
+            
+            
 
 
             Console.ReadKey();

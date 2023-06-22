@@ -13,21 +13,70 @@ namespace Projeto_RPG.Personagens.Classes
         public Arqueiro(string nome) : base(nome)
         {
             Nome = nome;
-            PontosVidaMax = 100;
+            PontosVidaMax = 90;
             PontosVidaAtual = PontosVidaMax;
-            Forca = 70;
+            Forca = 0;
             Defesa = 30;
             Destreza = 30;
         }
 
-        public override void Atacar() { }
+        public override void Atacar(Personagem inimigo)
+        {
+            Console.WriteLine($"{this.Nome} ataca {inimigo.Nome}.");
+            Console.ReadKey();
+            Random r = new Random();
+            if (r.Next(1, 100) <= (10 - (Destreza/10)))
+            {
+                Console.WriteLine($"{Nome} errou o ataque.");
+                return;
+            }
+            if (CalcularDano(inimigo) < 0)
+            {
+                inimigo.PontosVidaAtual -= r.Next(1, 5) * 3;
+            }
 
-        public override void UsarHabilidade() { }
+            else
+            {
+                inimigo.PontosVidaAtual -= this.CalcularDano(inimigo);
 
-        public override void Defender() { }
+            }
+            if (inimigo.PontosVidaAtual < 0) inimigo.PontosVidaAtual = 0;
+        }
 
-        public override void Fugir() { }
+        public override void UsarHabilidade(Personagem inimigo)
+        {
+            base.UsarHabilidade(inimigo);
+        }
 
-        public override void CalcularDano(Personagem atacado) { }
+        public override void Defender()
+        {
+            base.Defender();
+        }
+
+        public override void Fugir(Personagem Fugitivo)
+        {
+            base.Fugir(Fugitivo);
+        }
+
+        public override void SubirNivel() 
+        { 
+            base.SubirNivel();
+        }
+
+        public override void Status() 
+        {
+            Console.WriteLine("=====================");
+            Console.WriteLine($" Nome: {Nome}. Arqueiro nível {Nivel}");
+            Console.Write("Vida:");
+            Console.ForegroundColor = ConsoleColor.Red;
+            Console.WriteLine($"{PontosVidaAtual}/{PontosVidaMax}");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.Write(" Destreza:");
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine($"{Destreza}");
+            Console.ForegroundColor = ConsoleColor.DarkYellow;
+            Console.WriteLine("=====================");
+            Console.ReadKey();
+        }
     }
 }

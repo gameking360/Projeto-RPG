@@ -1,4 +1,5 @@
-﻿using Projeto_RPG.Personagens.Habilidades;
+﻿using Projeto_RPG.Personagens.Classes;
+using Projeto_RPG.Personagens.Habilidades;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,15 +27,106 @@ namespace Projeto_RPG
             Nome = nome;
             Efeitos = new List<Efeito>();
             Habilidades = new List<Habilidade>();
+            ExpAtual = 0;
+            Nivel = 1;
+            
         }
 
-        public abstract void Atacar();
-        public virtual void Fugir() { }
-        public abstract void Defender();
-        public abstract void UsarHabilidade();
-        public abstract void CalcularDano(Personagem atacado);
-        public abstract void SubirNivel();
-        
+        public virtual void Atacar(Personagem inimigo)
+        {
+            Console.WriteLine($"{this.Nome} ataca {inimigo.Nome}.");
+            Console.ReadKey();
+            Random r = new Random();
+            if(r.Next(1,100) <= 10)
+            {
+                Console.WriteLine($"{Nome} errou o ataque.");
+                return;
+            }
+            if(CalcularDano(inimigo) < 0)
+            {
+                inimigo.PontosVidaAtual -= r.Next(1, 5) * 3;
+            }
+
+            else
+            {
+                inimigo.PontosVidaAtual -= this.CalcularDano(inimigo) * 2;
+                
+            }
+            if (inimigo.PontosVidaAtual < 0) inimigo.PontosVidaAtual = 0;
+
+        }
+
+        public virtual void Fugir(Personagem Inimigo) 
+        {
+            Random r = new Random();
+            int fugir = r.Next(1,20);
+
+            if(fugir > 16)
+            {
+                Console.WriteLine("Você conseguiu fugir.");
+            }
+            else if(fugir < 6)
+            {
+                Console.WriteLine("Você tenta fugir mas é pego por um ataque critico");
+                int dano = CalcularDano(Inimigo) * 2;
+                if (dano < 0) dano = dano * -1;
+                PontosVidaAtual -= dano;
+            }
+            else
+            {
+                Console.WriteLine("Você consegue fugir mas é pego de raspao por um ataque");
+            }
+            Console.ReadKey();
+        }
+
+        public virtual void Defender()
+        {
+            Console.WriteLine($"{Nome} defendeu");
+            Defesa +=  + Forca / 2;
+            
+        }
+
+        public virtual void UsarHabilidade(Personagem inimigo)
+        {
+
+        }
+
+        public virtual int CalcularDano(Personagem atacado)
+        {
+            Random r = new Random();
+
+            int dano = (int)((double)Forca * (1 + r.NextDouble()));
+            int critico = r.Next(1, 20);
+
+            if (critico == 20)
+            {
+                dano += (int)(0.5 * (double)dano);
+            }
+
+            int dano_final = dano - atacado.Defesa;
+            return dano_final;
+        }
+
+        public virtual void SubirNivel() 
+        { 
+            if (ExpAtual >= 5 && ExpAtual < 35)
+            {
+                Nivel = 2;
+                PontosVidaMax += 5;
+
+                PontosVidaAtual = PontosVidaMax;
+            }
+            if (ExpAtual >= 35 && ExpAtual < 50)
+            {
+                Nivel = 3;
+            }
+            if (ExpAtual >= 50)
+            {
+                Nivel = 4;
+            }
+        }
+
+        public abstract void Status();
 
     }
 }
