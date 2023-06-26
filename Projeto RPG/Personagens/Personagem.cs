@@ -1,4 +1,5 @@
-﻿using Projeto_RPG.Personagens.Classes;
+﻿using Projeto_RPG.Geral;
+using Projeto_RPG.Personagens.Classes;
 using Projeto_RPG.Personagens.Habilidades;
 using System;
 using System.Collections.Generic;
@@ -11,6 +12,8 @@ namespace Projeto_RPG
     internal abstract class Personagem
     {
         public string Nome { get; set ; }
+        
+        public string Classe { get; set ; }
         public int PontosVidaAtual { get; set ; }
         public int PontosVidaMax { get; set ; }
         public int Forca { get; set ; }
@@ -18,6 +21,7 @@ namespace Projeto_RPG
         public int Nivel { get; set ; }
         public int ExpAtual { get; set ; }
         public List<Efeito> Efeitos { get; set ; }
+        public Efeito EfeitoSofrido { get; set ; }
         public List<Habilidade> Habilidades { get; set ; }
 
         public Personagem() { }
@@ -25,10 +29,11 @@ namespace Projeto_RPG
         public Personagem(string nome)
         {
             Nome = nome;
-            Efeitos = new List<Efeito>();
+            Efeitos = Mundo.CriacaoEfeitos();
             Habilidades = new List<Habilidade>();
             ExpAtual = 0;
             Nivel = 1;
+            EfeitoSofrido = null;
             
         }
 
@@ -95,7 +100,28 @@ namespace Projeto_RPG
 
         public virtual void UsarHabilidade(Personagem inimigo)
         {
+            int num = 0;
+            int op = 0;
+            do
+            {
+                num = 0;
+                Console.WriteLine("|===================================|");
+                Console.WriteLine("  Qual habilidade gostaria de usar?");
+                foreach (Habilidade habilidade in Habilidades)
+                {
+                    num++;
+                    Console.WriteLine($"{num}. {habilidade.Nome}");
+                }
+                Console.WriteLine("|===================================|");
+                try
+                {
+                    op = int.Parse(Console.ReadLine());
 
+                }catch(Exception e) { Console.WriteLine("Insira uma habilidade válida"); }
+                }while (op < 1 || op > num);
+            Console.WriteLine($"{Nome} usou {Habilidades[op - 1].Nome}");
+            inimigo.EfeitoSofrido = Habilidades[op - 1].Efeito;
+            inimigo.PontosVidaAtual -= Habilidades[op - 1].Dano;
         }
 
         public virtual int CalcularDano(Personagem atacado)
@@ -137,5 +163,39 @@ namespace Projeto_RPG
 
         public abstract void Status();
 
+        public virtual void VerEfeitos()
+        {
+            int x = 1;
+            if(EfeitoSofrido != null)
+            {
+                if(EfeitoSofrido.Nome == "Envenenado")
+                {
+                    Console.WriteLine($"{Nome} está envenenado");
+                    PontosVidaAtual -=  (int) EfeitoSofrido.Quantidade;
+                    
+                }
+                else if(EfeitoSofrido.Nome == "Fraqueza")
+                {
+                    Console.WriteLine($"{Nome} está fraco");
+                    Defesa = (int) (Defesa * 0.70);
+                }
+                else if(EfeitoSofrido.Nome == "Queimado")
+                {
+                    Console.WriteLine($"{Nome} está queimado");
+                    PontosVidaAtual -= (int)EfeitoSofrido.Quantidade;
+                }
+
+                else if(EfeitoSofrido.Nome == "Congelado")
+                {
+                    Console.WriteLine($"{Nome} está congelado");
+
+                }
+                else if(EfeitoSofrido.Nome == "Sangramento")
+                {
+                    Console.WriteLine($"{Nome} está sangrando");
+                    PontosVidaAtual -= (int) EfeitoSofrido.Quantidade;
+                }
+            }
+        }
     }
 }

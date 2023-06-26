@@ -19,7 +19,7 @@ namespace Projeto_RPG.Geral
         {
             Inimigos = null;
             Efeitos = CriacaoEfeitos();
-            Magias = CriacaoMagia();
+            Magias = null;
         }
 
         //Criação dos inimigos, eles são criados com tipos aleatórios, e vão sendo criados conforme o nível do jogador
@@ -38,17 +38,16 @@ namespace Projeto_RPG.Geral
             {
                 inimigos.Add(new Inimigo("Dragão Bebê", 10, 10, 5, 0, (Tipos)r.Next(1, 5), 5));
                 inimigos.Add(new Inimigo("Ent", 20, 20, 20, 20, Tipos.Grama, 10));
-                inimigos.Add(new Inimigo("Elfo", 30, 30, 10, 15, (Tipos)r.Next(1, 5), 15));    
+                inimigos.Add(new Inimigo("Elfo", 30, 30, 10, 15, (Tipos)r.Next(1, 5), 10));    
                 inimigos.Add(new Inimigo("Orc", 40, 40, 30, 30,(Tipos) r.Next(1,5),15));
             }
             if (player.Nivel == 3)
             {
-                inimigos.Add(new Inimigo("Dragão Bebê", 10, 10, 5, 0, (Tipos)r.Next(1, 5), 5));
                 inimigos.Add(new Inimigo("Ent", 20, 20, 20, 20, Tipos.Grama, 10));
                 inimigos.Add(new Inimigo("Elfo", 30, 30, 10, 15, (Tipos)r.Next(1, 5), 15));
                 inimigos.Add(new Inimigo("Orc", 40, 40, 30, 30, (Tipos)r.Next(1, 5), 15));
                 inimigos.Add(new Inimigo("Dragão", 60, 60, 50, 50, (Tipos)r.Next(1, 5), 20));
-                inimigos.Add(new Inimigo("Mini Golem", 60, 60, 30, 40, (Tipos)r.Next(1, 5), 15));
+                inimigos.Add(new Inimigo("Golem", 60, 60, 30, 40, (Tipos)r.Next(1, 5), 15));
             }
             if (player.Nivel == 4)
             {
@@ -63,36 +62,52 @@ namespace Projeto_RPG.Geral
         public static List<Efeito> CriacaoEfeitos()
         {
             List<Efeito> efeitos = new List<Efeito>();
-            efeitos.Add(new Efeito("Envenenado", "O personagem atingido sofre dano a cada rodada", 1, 1));
-            efeitos.Add(new Efeito("Fraqueza", "O personagem atingido sofre 30% a mais de dano na próxima rodada", 1, 0.30));
-            efeitos.Add(new Efeito("Queimado", "O personagem atingido queima por 2 rodadas", 2, -10));
-            efeitos.Add(new Efeito("Congelado", "O personagem atingido fica 1 rodada sem agir", 1, 0));
+            efeitos.Add(new Efeito("Envenenado", 1, 15));
+            efeitos.Add(new Efeito("Fraqueza", 1, 0.30));
+            efeitos.Add(new Efeito("Queimado", 2, 20));
+            efeitos.Add(new Efeito("Congelado", 1, 0));
+            efeitos.Add(new Efeito("Sangramento", 2, 20));
 
             return efeitos;
         }
 
         //Criação das Magias do Mundo
-        public static List<Magia> CriacaoMagia()
+        public static List<Magia> CriacaoMagia(Personagem player)
         {
             
             List<Efeito> Efeitos = CriacaoEfeitos();
             List<Magia> Magia = new List<Magia>();
-            Magia.Add(new Magia("Bola de Fogo", Tipos.Fogo, Tipos.Água,Efeitos.Find(p => p.Nome == "Queimado"), 10, 10));
-            Magia.Add(new Magia("Piso de Gelo",Tipos.Gelo, Tipos.Fogo,Efeitos.Find(p => p.Nome == "Congelado"),12,20));
-            Magia.Add(new Magia("Bolha de Agua", Tipos.Água, Tipos.Grama,Efeitos.Find(p => p.Nome == "Fraqueza"),10,25));
-            Magia.Add(new Magia("Magia de cura", Tipos.Grama, Tipos.Nulo, null, 40, 35));
-            Magia.Add(new Magia("Relampagao", Tipos.Eletricidade, Tipos.Nulo, null, 25, 15));
+            Magia.Clear();
+
+            if (player.Nivel == 1)
+            {
+                Magia.Add(new Magia("Bola de Fogo", Tipos.Fogo, Tipos.Água, Efeitos.Find(p => p.Nome == "Queimado"), 10, 10));
+            }
+            if (player.Nivel == 2)
+            {
+                Magia.Add(new Magia("Bola de Fogo", Tipos.Fogo, Tipos.Água, Efeitos.Find(p => p.Nome == "Queimado"), 10, 10));
+                Magia.Add(new Magia("Piso de Gelo",Tipos.Gelo, Tipos.Fogo,Efeitos.Find(p => p.Nome == "Congelado"),12,20));
+                Magia.Add(new Magia("Bolha de Agua", Tipos.Água, Tipos.Grama, Efeitos.Find(p => p.Nome == "Fraqueza"), 10, 25));
+            }
+            if (player.Nivel == 3)
+            {
+                Magia.Add(new Magia("Bola de Fogo", Tipos.Fogo, Tipos.Água, Efeitos.Find(p => p.Nome == "Queimado"), 10, 10));
+                Magia.Add(new Magia("Piso de Gelo", Tipos.Gelo, Tipos.Fogo, Efeitos.Find(p => p.Nome == "Congelado"), 12, 20));
+                Magia.Add(new Magia("Bolha de Agua", Tipos.Água, Tipos.Grama, Efeitos.Find(p => p.Nome == "Fraqueza"), 10, 25));
+                Magia.Add(new Magia("Magia de cura", Tipos.Grama, Tipos.Nulo, null, 0, 35));
+            }
+            if (player.Nivel == 4)
+            {
+                Magia.Add(new Magia("Bola de Fogo", Tipos.Fogo, Tipos.Água, Efeitos.Find(p => p.Nome == "Queimado"), 10, 10));
+                Magia.Add(new Magia("Piso de Gelo", Tipos.Gelo, Tipos.Fogo, Efeitos.Find(p => p.Nome == "Congelado"), 12, 20));
+                Magia.Add(new Magia("Bolha de Agua", Tipos.Água, Tipos.Grama, Efeitos.Find(p => p.Nome == "Fraqueza"), 10, 25));
+                Magia.Add(new Magia("Magia de cura", Tipos.Grama, Tipos.Nulo, null, 0, 35));
+                Magia.Add(new Magia("Relampagao", Tipos.Eletricidade, Tipos.Nulo, null, 50 , 15));
+            }
 
             return Magia;
         }
 
-        /*public static List<Habilidade> HabilidadesGuerreiro()
-        {
-            List<Habilidade> HabGuerreiro = new List<Habilidade>();
-
-
-        }*/
-
-
+       
     }
 }

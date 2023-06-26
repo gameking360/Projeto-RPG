@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projeto_RPG.Personagens.Habilidades;
+using Projeto_RPG.Personagens.Habilidades.Enums;
+using Projeto_RPG.Geral;
 
 namespace Projeto_RPG.Personagens.Classes
 {
@@ -13,11 +16,13 @@ namespace Projeto_RPG.Personagens.Classes
         public Arqueiro(string nome) : base(nome)
         {
             Nome = nome;
+            Classe = "Arqueiro";
             PontosVidaMax = 90;
             PontosVidaAtual = PontosVidaMax;
-            Forca = 0;
+            Forca = 5;
             Defesa = 15;
             Destreza = 30;
+            Habilidades.Add(new Habilidade("Flecha flamejante", Tipos.Fogo, Tipos.Gelo, Mundo.CriacaoEfeitos().Find(p => p.Nome == "Queimado"), Forca + 5));
         }
 
         public override void Atacar(Personagem inimigo)
@@ -81,8 +86,10 @@ namespace Projeto_RPG.Personagens.Classes
                 Forca += 5;
                 Defesa += 5;
                 Destreza += 10;
+                Habilidades.Add(new Habilidade("Flecha envenenada", Tipos.Grama, Tipos.Água, Mundo.CriacaoEfeitos().Find(p => p.Nome == "Envenenado"), Forca + 10));
 
                 Console.WriteLine($"{Nome} subiu para o nivel {Nivel} e recuperou toda a vida");
+                Console.WriteLine($"{Nome} desbloqueou a habilidade 'Flecha envenenada'!");
                 PontosVidaAtual = PontosVidaMax;
             }
             if (ExpAtual >= 50)

@@ -13,6 +13,8 @@ namespace Projeto_RPG.Personagens.Habilidades.Enums
         Eletricidade = 3,
         Grama = 4,
         Água = 5,
+        Cortante = 6,
+        Perfurante = 7,
         Nulo
     }
 }

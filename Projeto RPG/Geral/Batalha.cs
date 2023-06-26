@@ -6,26 +6,27 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projeto_RPG.Personagens.Habilidades;
+using Projeto_RPG.Personagens.Classes;
 
 namespace Projeto_RPG.Geral
 {
     internal class Batalha
     {
+        
         public Personagem Player { get; set; }
         private Inimigo Inimigo { get; set; }
         Random rand = new Random();
-        private int defesaPlayer { get; set; }
 
         public Batalha(Personagem player,Inimigo inimigo)
         {
             Player = player;
             Inimigo = inimigo;
-            defesaPlayer = Player.Defesa;
         }
 
         public void IniciarCombate()
         {
-            
+            int defesaPadrao = Player.Defesa;
             Console.Clear();
             int op = 0;
             while (Inimigo.PontosVidaAtual > 0 && Player.PontosVidaAtual > 0)
@@ -35,8 +36,14 @@ namespace Projeto_RPG.Geral
                 {
                     Console.Clear();
                     Console.WriteLine($" {Player.Nome}: {Player.PontosVidaAtual}/{Player.PontosVidaMax} HP   VS.   {Inimigo.Nome}: {Inimigo.PontosVidaAtual}/{Inimigo.PontosVidaMax} HP");
+                    if(Player is Mago)
+                    {
+                        Mago m = (Mago)Player;
+                        Console.WriteLine($"Mana: {m.PontosMagiaAtual}/{m.PontosMagiaMax}");
+                    }
                     Console.WriteLine("|==================================|");
-                    Console.WriteLine("| 1. Atacar     2. Usar Habilidade |");
+                    if (Player.Classe != "Mago") Console.WriteLine("| 1. Atacar     2. Usar Habilidade |");
+                    else Console.WriteLine("| 1. Atacar     2. Usar Magia      |");
                     Console.WriteLine("| 3. Defender   4. Fugir           |");
                     Console.WriteLine("|==================================|");
                     switch (Console.ReadLine())
@@ -45,8 +52,14 @@ namespace Projeto_RPG.Geral
                             Player.Atacar(Inimigo);
                             op = 3;
                             break;
-                        case "2":
-                            Player.UsarHabilidade(Player);
+                        case "2":if(Player.Classe == "Mago")
+                            { Mago mago = (Mago)Player;
+                                mago.Magias = Mundo.CriacaoMagia(mago);
+                                Magias();
+                            }
+                            else {
+                                Player.UsarHabilidade(Inimigo);
+                            }
                             op = 3;
                             break;
                         case "3":
@@ -82,7 +95,15 @@ namespace Projeto_RPG.Geral
 
         public void AcaoInimigo()
         {
-            int acao = rand.Next(1, 3);
+
+            Inimigo.VerEfeitos();
+            if(Inimigo.EfeitoSofrido != null &&Inimigo.EfeitoSofrido.Nome == "Congelado")
+            {
+                Console.WriteLine($"{Inimigo.Nome} está congelado");
+                return;
+            }
+
+            int acao = rand.Next(1, 2);
             switch (acao)
             {
                 case 1: 
@@ -91,10 +112,44 @@ namespace Projeto_RPG.Geral
                 case 2:
                     Inimigo.Defender();
                     break;
-                case 3:
-                    Inimigo.UsarHabilidade(Player);
-                    break;
             }
+        }
+       
+
+        public void Magias()
+        {
+            do
+            {
+            int x = 1;
+            Mago m = (Mago)Player;
+            Console.WriteLine("Digite a magia a ser usada");
+            Console.WriteLine("====================");
+
+            foreach (Magia me in m.Magias)
+            {
+                Console.WriteLine($"{x} - {me.Nome} - {me.Custo}");
+                x++;
+            }
+            Console.WriteLine("====================");
+
+            
+                string magia = Console.ReadLine().ToLower();
+
+                if (m.Magias.Exists(ma => ma.Nome.ToLower() == magia))
+                {
+                    
+                    Magia magia1 = m.Magias.Find(p => p.Nome.ToLower() == magia);
+                    
+
+                    m.UsarMagia(Inimigo, magia1);
+                    break;
+                }
+                else
+                {
+                    Console.WriteLine("Digite um nome de magia que você possua");
+                    
+                }
+            } while (true);
         }
     }
 }

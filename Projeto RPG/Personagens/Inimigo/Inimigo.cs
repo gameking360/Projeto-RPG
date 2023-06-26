@@ -19,6 +19,7 @@ namespace Projeto_RPG.Personagens.Inimigo
         public Inimigo(string nome, int pontosVidaAtual, int pontosVidaMax, int forca, int defesa, Tipos tipo, int recompensaXP)
         {
             Nome = nome;
+            Classe = "Inimigo";
             PontosVidaAtual = pontosVidaAtual;
             PontosVidaMax = pontosVidaMax;
             Forca = forca;
@@ -93,6 +94,10 @@ namespace Projeto_RPG.Personagens.Inimigo
         {
             Console.WriteLine($"Nome: {Nome} \nVida: {PontosVidaAtual}/{PontosVidaMax}");
             
+        }
+        public override void VerEfeitos()
+        {
+            base.VerEfeitos();
         }
     }
 }

@@ -17,6 +17,7 @@ namespace Projeto_RPG.Personagens.Classes
         public Mago(string nome) : base(nome)
         {
             Nome = nome;
+            Classe = "Mago";
             PontosVidaMax = 80;
             PontosVidaAtual = PontosVidaMax;
             Forca = 5;
@@ -50,6 +51,7 @@ namespace Projeto_RPG.Personagens.Classes
                     Console.WriteLine($"Você se cura {magia.Dano} pontos de vida");
                     if (PontosVidaAtual + magia.Dano > PontosVidaMax) PontosVidaAtual = PontosVidaMax;
                     PontosVidaAtual += magia.Dano;
+                    PontosMagiaAtual -= magia.Custo;
                     
                 }
                 else
@@ -65,6 +67,8 @@ namespace Projeto_RPG.Personagens.Classes
                         Console.WriteLine($"Você usa {magia.Nome}");
                         inimigo.PontosVidaAtual -= magia.Dano;
                     }
+                    alvo.EfeitoSofrido = magia.Efeito;
+                    PontosMagiaAtual -= magia.Custo;
                 }
             }
         }
@@ -125,7 +129,7 @@ namespace Projeto_RPG.Personagens.Classes
         {
             Console.WriteLine("========================");
             Console.WriteLine($" Nome: {Nome}. Mago nível {Nivel}");
-            Console.WriteLine(" Vida: ");
+            Console.Write(" Vida: ");
             Console.ForegroundColor = ConsoleColor.Red;
             Console.WriteLine($"{PontosVidaAtual}/{PontosVidaMax}");
             Console.ForegroundColor = ConsoleColor.DarkYellow;

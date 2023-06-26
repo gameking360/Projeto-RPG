@@ -47,6 +47,7 @@
     <Compile Include="Geral\Historia.cs" />
     <Compile Include="Geral\Jogo.cs" />
     <Compile Include="Geral\Mundo.cs" />
+    <Compile Include="Geral\Tutorial.cs" />
     <Compile Include="Personagens\Classes\Arqueiro.cs" />
     <Compile Include="Personagens\Classes\Guerreiro.cs" />
     <Compile Include="Personagens\Classes\Mago.cs" />

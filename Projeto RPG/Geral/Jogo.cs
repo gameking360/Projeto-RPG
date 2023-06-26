@@ -48,7 +48,7 @@ namespace Projeto_RPG
                 Console.WriteLine("|===================|");
                 Console.WriteLine("|  1. Batalhar      |");
                 Console.WriteLine("|  2. Ver status    |");
-                Console.WriteLine("|  3. Menu Inicial  |");
+                Console.WriteLine("|  3. Sair (Menu Inicial)          |");
                 Console.WriteLine("|===================|");
                 switch (Console.ReadLine())
 

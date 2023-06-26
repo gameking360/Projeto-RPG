@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading;
@@ -11,11 +12,12 @@ namespace Projeto_RPG
 {
     internal class Program
     {
-        static void Main(string[] args)
+        public static void Main()
         {
             Mundo mundo = new Mundo();
             Jogo jogo = new Jogo(mundo);
             Historia historia = new Historia();
+            Tutorial tutorial = new Tutorial();
             Console.Title = "LEGENDS OF MUSTAFHAR";
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             
@@ -26,17 +28,20 @@ namespace Projeto_RPG
                 Console.WriteLine("LEGENDS OF MUSTAFHAR!");
                 Console.WriteLine("=====================");
                 Console.WriteLine("|  (1) Novo jogo    |");
-                Console.WriteLine("|  (2) Créditos     |");
-                Console.WriteLine("|  (3) Sair do jogo |");
+                Console.WriteLine("|  (2) Tutorial     |");
+                Console.WriteLine("|  (3) Créditos     |");
+                Console.WriteLine("|  (4) Sair do jogo |");
                 Console.WriteLine("=====================");
                 switch (Console.ReadLine())
                 {
                     case "1": jogo.IniciarJogo();
                         break;
-                    case "2": Console.Clear(); 
+                    case "2": tutorial.TutorialMenu();
+                        break;
+                    case "3": Console.Clear(); 
                         historia.Creditos();
                         break;
-                    case "3": flag = false;
+                    case "4": flag = false;
                         Console.Clear();
                         Console.WriteLine("Fechando jogo...");
                         Thread.Sleep(1500);

@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Projeto_RPG.Personagens.Habilidades;
+using Projeto_RPG.Personagens.Habilidades.Enums;
+using Projeto_RPG.Geral;
 
 namespace Projeto_RPG.Personagens.Classes
 {
@@ -11,10 +14,12 @@ namespace Projeto_RPG.Personagens.Classes
         public Guerreiro(string nome) : base(nome)
         {
             Nome = nome;
+            Classe = "Guerreiro";
             PontosVidaMax = 150;
             PontosVidaAtual = PontosVidaMax;
-            Forca = 10;
-            Defesa = 20;
+            Forca = 15;
+            Defesa = 25;
+            Habilidades.Add(new Habilidade("Golpe de Espada", Tipos.Cortante, Tipos.Gelo, Mundo.CriacaoEfeitos().Find(p => p.Nome == "Sangramento"), 15));
         }
 
         public override void Atacar(Personagem inimigo)
@@ -61,8 +66,8 @@ namespace Projeto_RPG.Personagens.Classes
             {
                 Nivel = 2;
                 PontosVidaMax += 15;
-                Forca += 3;
-                Defesa += 5;
+                Forca += 5;
+                Defesa += 7;
 
                 Console.WriteLine($"{Nome} subiu para o nivel {Nivel} e recuperou toda a vida");
                 PontosVidaAtual = PontosVidaMax;
@@ -71,20 +76,21 @@ namespace Projeto_RPG.Personagens.Classes
             {
                 Nivel = 3;
                 PontosVidaMax += 25;
-                Forca += 5;
-                Defesa += 7;
+                Forca += 10;
+                Defesa += 10;
+                Habilidades.Add(new Habilidade("Espada Flamejante", Tipos.Fogo, Tipos.Gelo, Mundo.CriacaoEfeitos().Find (p => p.Nome == "Queimado") ,20));
 
-                Console.WriteLine($"{Nome} subiu para o nivel {Nivel}  e recuperou toda a vida");
+                Console.WriteLine($"{Nome} subiu para o nivel {Nivel} e recuperou toda a vida");
                 PontosVidaAtual = PontosVidaMax;
             }
             if (ExpAtual >= 50)
             {
                 Nivel = 4;
                 PontosVidaMax += 30;
-                Forca += 7;
-                Defesa += 8;
+                Forca += 15;
+                Defesa += 15;
 
-                Console.WriteLine($"{Nome} subiu para o nivel {Nivel}  e recuperou toda a vida");
+                Console.WriteLine($"{Nome} subiu para o nivel {Nivel} e recuperou toda a vida");
                 PontosVidaAtual = PontosVidaMax;
             }
         }

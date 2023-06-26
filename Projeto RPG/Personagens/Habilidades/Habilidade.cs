@@ -20,7 +20,7 @@ namespace Projeto_RPG.Personagens.Habilidades
         {
             Nome = nome;
             Tipo = tipos;
-            Fraqueza = fraqueza;
+            Fraqueza = fraqueza; // Vantagem. Ex.: Tipo: Fogo -> Fraqueza: Gelo
             Efeito = efeito;
             Dano = dano;
         }
