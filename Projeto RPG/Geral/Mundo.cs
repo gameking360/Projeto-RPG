@@ -53,11 +53,11 @@ namespace Projeto_RPG.Geral
             }
             if (player.Nivel == 4)
             {
-                inimigos.Add(new Inimigo("MUSTAFHAR", 100, 100, 75, 75, Tipos.Fogo, 100));
+                inimigos.Add(new Inimigo("MUSTAFHAR", 100, 100, 75, 75, Tipos.Fogo, 1000)); //1000 de xp por causa do final da história
             }
             return inimigos;
             
-            //os outros inimigos só são adicionados na lista após o personagem atingir um nível determinado
+            
         }
 
         public static List<Efeito> CriacaoEfeitos()

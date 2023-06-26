@@ -63,18 +63,21 @@ namespace Projeto_RPG
 
             if(fugir > 16)
             {
-                Console.WriteLine("Você conseguiu fugir.");
+                Console.WriteLine("Você conseguiu fugir sem nenhum arranhão.");
             }
             else if(fugir < 6)
             {
-                Console.WriteLine("Você tenta fugir mas é pego por um ataque critico");
+                Console.WriteLine("Você tenta fugir mas é pego por um ataque crítico");
                 int dano = CalcularDano(Inimigo) * 2;
                 if (dano < 0) dano = dano * -1;
                 PontosVidaAtual -= dano;
             }
             else
             {
-                Console.WriteLine("Você consegue fugir mas é pego de raspao por um ataque");
+                Console.WriteLine("Você consegue fugir mas é pego de raspão por um ataque");
+                double dano = CalcularDano(Inimigo) * 0.50;
+                if (dano < 0) dano = dano * -1;
+                PontosVidaAtual -= (int)dano;
             }
             Console.ReadKey();
         }

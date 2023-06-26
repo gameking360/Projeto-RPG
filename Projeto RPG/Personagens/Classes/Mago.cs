@@ -66,6 +66,7 @@ namespace Projeto_RPG.Personagens.Classes
             Console.ForegroundColor = ConsoleColor.DarkYellow;
             Console.WriteLine($" Força: {Forca}");
             Console.WriteLine("========================");
+            Console.Write("\nPressione qualquer tecla para continuar");
             Console.ReadKey();
 
         }
