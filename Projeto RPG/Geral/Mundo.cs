@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
-using System.Threading.Tasks;
 using Projeto_RPG.Personagens.Habilidades;
 using Projeto_RPG.Personagens.Habilidades.Enums;
 using Projeto_RPG.Personagens.Inimigo;
@@ -24,6 +22,7 @@ namespace Projeto_RPG.Geral
             Magias = CriacaoMagia();
         }
 
+        //Criação dos inimigos, eles são criados com tipos aleatórios, e vão sendo criados conforme o nível do jogador
         public static List<Inimigo> CriacaoInimigos(Personagem player)
         {
             Random r = new Random();
@@ -60,6 +59,7 @@ namespace Projeto_RPG.Geral
             
         }
 
+        //Criação dos Efeitos que as magias causam
         public static List<Efeito> CriacaoEfeitos()
         {
             List<Efeito> efeitos = new List<Efeito>();
@@ -71,6 +71,7 @@ namespace Projeto_RPG.Geral
             return efeitos;
         }
 
+        //Criação das Magias do Mundo
         public static List<Magia> CriacaoMagia()
         {
             
@@ -79,7 +80,7 @@ namespace Projeto_RPG.Geral
             Magia.Add(new Magia("Bola de Fogo", Tipos.Fogo, Tipos.Água,Efeitos.Find(p => p.Nome == "Queimado"), 10, 10));
             Magia.Add(new Magia("Piso de Gelo",Tipos.Gelo, Tipos.Fogo,Efeitos.Find(p => p.Nome == "Congelado"),12,20));
             Magia.Add(new Magia("Bolha de Agua", Tipos.Água, Tipos.Grama,Efeitos.Find(p => p.Nome == "Fraqueza"),10,25));
-            Magia.Add(new Magia("Magia de cura", Tipos.Grama, Tipos.Nulo, null, 0, 35));
+            Magia.Add(new Magia("Magia de cura", Tipos.Grama, Tipos.Nulo, null, 40, 35));
             Magia.Add(new Magia("Relampagao", Tipos.Eletricidade, Tipos.Nulo, null, 25, 15));
 
             return Magia;

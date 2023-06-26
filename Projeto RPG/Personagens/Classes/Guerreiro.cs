@@ -13,7 +13,7 @@ namespace Projeto_RPG.Personagens.Classes
             Nome = nome;
             PontosVidaMax = 150;
             PontosVidaAtual = PontosVidaMax;
-            Forca = 100;
+            Forca = 10;
             Defesa = 20;
         }
 
@@ -42,10 +42,12 @@ namespace Projeto_RPG.Personagens.Classes
             Random r = new Random();
 
             int dano = (int)((double)Forca * (1 + r.NextDouble()));
-            int critico = r.Next(1, 20);
-
+            int critico = r.Next(1, 21);
             if (critico == 20)
             {
+                
+                Console.WriteLine($"{Nome} deu um acertou crítico");
+                Console.ReadKey();
                 dano += dano;
             }
 
@@ -72,7 +74,7 @@ namespace Projeto_RPG.Personagens.Classes
                 Forca += 5;
                 Defesa += 7;
 
-                Console.WriteLine($"{Nome} subiu para o nivel {Nivel}");
+                Console.WriteLine($"{Nome} subiu para o nivel {Nivel}  e recuperou toda a vida");
                 PontosVidaAtual = PontosVidaMax;
             }
             if (ExpAtual >= 50)
@@ -82,7 +84,7 @@ namespace Projeto_RPG.Personagens.Classes
                 Forca += 7;
                 Defesa += 8;
 
-                Console.WriteLine($"{Nome} subiu para o nivel {Nivel}");
+                Console.WriteLine($"{Nome} subiu para o nivel {Nivel}  e recuperou toda a vida");
                 PontosVidaAtual = PontosVidaMax;
             }
         }

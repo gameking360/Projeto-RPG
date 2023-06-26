@@ -14,16 +14,18 @@ namespace Projeto_RPG.Geral
         public Personagem Player { get; set; }
         private Inimigo Inimigo { get; set; }
         Random rand = new Random();
+        private int defesaPlayer { get; set; }
 
         public Batalha(Personagem player,Inimigo inimigo)
         {
             Player = player;
             Inimigo = inimigo;
+            defesaPlayer = Player.Defesa;
         }
 
         public void IniciarCombate()
         {
-            int defesaPadrao = Player.Defesa;
+            
             Console.Clear();
             int op = 0;
             while (Inimigo.PontosVidaAtual > 0 && Player.PontosVidaAtual > 0)
@@ -65,7 +67,7 @@ namespace Projeto_RPG.Geral
 
                 AcaoInimigo();
             }
-            if (Player.PontosVidaAtual > 0 && Player.Nivel < 4)
+            if (Player.PontosVidaAtual > 0)
             {
                 Console.WriteLine("Você venceu a batalha!");
                 Console.WriteLine($"Você ganhou: {Inimigo.RecompensaXP} exp" );

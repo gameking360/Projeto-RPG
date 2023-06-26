@@ -1,4 +1,5 @@
-﻿using Projeto_RPG.Personagens.Habilidades.Enums;
+﻿using Projeto_RPG.Personagens.Classes;
+using Projeto_RPG.Personagens.Habilidades.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,7 +29,54 @@ namespace Projeto_RPG.Personagens.Inimigo
 
         public override void Atacar(Personagem inimigo)
         {
-            base.Atacar(inimigo);
+            Console.WriteLine($"{this.Nome} ataca {inimigo.Nome}.");
+            Console.ReadKey();
+            Random r = new Random();
+
+            int dano = CalcularDano(inimigo);
+
+            if(inimigo is Arqueiro)
+            {
+                Arqueiro arq = (Arqueiro)inimigo;
+                if (r.Next(1, 100) < (10 + (arq.Destreza / 10)))
+                {
+                    Console.WriteLine($"{Nome} errou o ataque.");
+                    return; 
+                }
+                if (dano < 0)
+                {
+                    inimigo.PontosVidaAtual -= r.Next(1, 5) * 3;
+                }
+
+                else
+                {
+                    inimigo.PontosVidaAtual -= dano * 2;
+
+                }
+                if (inimigo.PontosVidaAtual < 0) inimigo.PontosVidaAtual = 0;
+            }
+            else
+            {
+                if (r.Next(1, 100) <= 10)
+                {
+                    Console.WriteLine($"{Nome} errou o ataque.");
+                    return;
+                }
+                if (dano < 0)
+                {
+                    inimigo.PontosVidaAtual -= r.Next(1, 5) * 3;
+                }
+
+                else
+                {
+                    inimigo.PontosVidaAtual -= dano * 2;
+
+                }
+
+                if (inimigo.PontosVidaAtual < 0) inimigo.PontosVidaAtual = 0;
+            }
+                
+
         }
 
         public override void UsarHabilidade(Personagem inimigo)

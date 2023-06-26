@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace Projeto_RPG
@@ -36,6 +37,10 @@ namespace Projeto_RPG
                         historia.Creditos();
                         break;
                     case "3": flag = false;
+                        Console.Clear();
+                        Console.WriteLine("Fechando jogo...");
+                        Thread.Sleep(1500);
+                        
                         break;
                     default: Console.Clear();
                         Console.WriteLine("Opção inválida! (Aperte qualquer tecla para continuar)");

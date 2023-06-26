@@ -1,9 +1,10 @@
 ﻿using Projeto_RPG.Personagens.Habilidades;
+using Projeto_RPG.Personagens.Inimigo;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+
 
 namespace Projeto_RPG.Personagens.Classes
 {
@@ -16,11 +17,11 @@ namespace Projeto_RPG.Personagens.Classes
         public Mago(string nome) : base(nome)
         {
             Nome = nome;
-            PontosVidaMax = 100;
+            PontosVidaMax = 80;
             PontosVidaAtual = PontosVidaMax;
-            Forca = 30;
-            Defesa = 30;
-            PontosMagiaMax = 100;
+            Forca = 5;
+            Defesa = 5;
+            PontosMagiaMax = 110;
             PontosMagiaAtual = PontosMagiaMax;
             Magias = new List<Magia>();
         }
@@ -35,7 +36,38 @@ namespace Projeto_RPG.Personagens.Classes
             base.UsarHabilidade(inimigo);
         }
 
-        public void UsarMagia() { }
+        public void UsarMagia(Personagem alvo, Magia magia)
+        {
+            if(magia.Custo > PontosMagiaAtual)
+            {
+                Console.WriteLine("Você não tem mana suficiente.");
+                
+            }
+            else
+            {
+                if(magia.Nome == "Magia de cura")
+                {
+                    Console.WriteLine($"Você se cura {magia.Dano} pontos de vida");
+                    if (PontosVidaAtual + magia.Dano > PontosVidaMax) PontosVidaAtual = PontosVidaMax;
+                    PontosVidaAtual += magia.Dano;
+                    
+                }
+                else
+                {
+                    Inimigo.Inimigo inimigo = (Inimigo.Inimigo)alvo;
+                    if(inimigo.Tipo == magia.Fraqueza)
+                    {
+                        Console.WriteLine($"Você usa {magia.Nome}");
+                        inimigo.PontosVidaAtual -= magia.Dano * 2;
+                    }
+                    else
+                    {
+                        Console.WriteLine($"Você usa {magia.Nome}");
+                        inimigo.PontosVidaAtual -= magia.Dano;
+                    }
+                }
+            }
+        }
 
         public override void Defender()
         {
@@ -49,7 +81,44 @@ namespace Projeto_RPG.Personagens.Classes
 
         public override void SubirNivel() 
         {
-            base.SubirNivel();
+            if (ExpAtual >= 5 && ExpAtual < 35 && Nivel != 2)
+            {
+                Nivel = 2;
+                PontosVidaMax += 5;
+                Forca += 1;
+                Defesa += 3;
+                PontosMagiaMax += 20;
+
+
+                Console.WriteLine($"{Nome} subiu para o nível {Nivel} e recuperou toda a vida e mana");
+                PontosVidaAtual = PontosVidaMax;
+                PontosMagiaAtual = PontosMagiaMax;
+            }
+            if (ExpAtual >= 35 && ExpAtual < 50 && Nivel != 3)
+            {
+                Nivel = 3;
+                PontosVidaMax += 10;
+                Forca += 2;
+                Defesa += 5;
+                PontosMagiaMax += 25;
+
+                Console.WriteLine($"{Nome} subiu para o nível {Nivel} e recuperou toda a vida e mana");
+                PontosVidaAtual = PontosVidaMax;
+                PontosMagiaAtual= PontosMagiaMax;
+            }
+            if (ExpAtual >= 50)
+            {
+                Nivel = 4;
+                PontosVidaMax += 30;
+                Forca += 7;
+                Defesa += 8;
+
+                PontosMagiaMax += 20;
+
+                Console.WriteLine($"{Nome} subiu para o nível {Nivel} e recuperou toda a vida e mana");
+                PontosVidaAtual = PontosVidaMax;
+                PontosMagiaAtual = PontosMagiaMax;
+             }
         }
 
         public override void Status()

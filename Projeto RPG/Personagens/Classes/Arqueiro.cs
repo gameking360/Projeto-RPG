@@ -16,7 +16,7 @@ namespace Projeto_RPG.Personagens.Classes
             PontosVidaMax = 90;
             PontosVidaAtual = PontosVidaMax;
             Forca = 0;
-            Defesa = 30;
+            Defesa = 15;
             Destreza = 30;
         }
 
@@ -25,19 +25,22 @@ namespace Projeto_RPG.Personagens.Classes
             Console.WriteLine($"{this.Nome} ataca {inimigo.Nome}.");
             Console.ReadKey();
             Random r = new Random();
+            
             if (r.Next(1, 100) <= (10 - (Destreza/10)))
             {
                 Console.WriteLine($"{Nome} errou o ataque.");
                 return;
             }
-            if (CalcularDano(inimigo) < 0)
+            int dano = CalcularDano(inimigo);
+          
+            if (dano < 0)
             {
                 inimigo.PontosVidaAtual -= r.Next(1, 5) * 3;
             }
 
             else
             {
-                inimigo.PontosVidaAtual -= this.CalcularDano(inimigo);
+                inimigo.PontosVidaAtual -= dano;
 
             }
             if (inimigo.PontosVidaAtual < 0) inimigo.PontosVidaAtual = 0;
@@ -59,8 +62,40 @@ namespace Projeto_RPG.Personagens.Classes
         }
 
         public override void SubirNivel() 
-        { 
-            base.SubirNivel();
+        {
+            if (ExpAtual >= 5 && ExpAtual < 35 && Nivel != 2)
+            {
+                Nivel = 2;
+                PontosVidaMax += 10;
+                Forca += 5;
+                Defesa += 3;
+                Destreza += 10;
+
+                Console.WriteLine($"{Nome} subiu para o nivel {Nivel} e recuperou toda a vida");
+                PontosVidaAtual = PontosVidaMax;
+            }
+            if (ExpAtual >= 35 && ExpAtual < 50 && Nivel != 3)
+            {
+                Nivel = 3;
+                PontosVidaMax += 15;
+                Forca += 5;
+                Defesa += 5;
+                Destreza += 10;
+
+                Console.WriteLine($"{Nome} subiu para o nivel {Nivel} e recuperou toda a vida");
+                PontosVidaAtual = PontosVidaMax;
+            }
+            if (ExpAtual >= 50)
+            {
+                Nivel = 4;
+                PontosVidaMax += 20;
+                Forca += 7;
+                Defesa += 8;
+                Destreza += 10;
+
+                Console.WriteLine($"{Nome} subiu para o nivel {Nivel} e recuperou toda a vida");
+                PontosVidaAtual = PontosVidaMax;
+            }
         }
 
         public override void Status() 

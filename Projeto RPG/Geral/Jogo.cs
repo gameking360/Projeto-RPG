@@ -124,6 +124,7 @@ namespace Projeto_RPG
                         break;
                 }
             } while (!check);
+            
             Console.WriteLine($"{nome} criado com sucesso!");
             return player;
         }

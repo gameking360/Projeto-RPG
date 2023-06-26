@@ -37,21 +37,25 @@ namespace Projeto_RPG
             Console.WriteLine($"{this.Nome} ataca {inimigo.Nome}.");
             Console.ReadKey();
             Random r = new Random();
+
+            int dano = CalcularDano(inimigo);
+
             if(r.Next(1,100) <= 10)
             {
                 Console.WriteLine($"{Nome} errou o ataque.");
                 return;
             }
-            if(CalcularDano(inimigo) < 0)
+            if(dano < 0)
             {
                 inimigo.PontosVidaAtual -= r.Next(1, 5) * 3;
             }
 
             else
             {
-                inimigo.PontosVidaAtual -= this.CalcularDano(inimigo) * 2;
+                inimigo.PontosVidaAtual -= dano * 2;
                 
             }
+           
             if (inimigo.PontosVidaAtual < 0) inimigo.PontosVidaAtual = 0;
 
         }
@@ -85,7 +89,7 @@ namespace Projeto_RPG
         public virtual void Defender()
         {
             Console.WriteLine($"{Nome} defendeu");
-            Defesa +=  + Forca / 2;
+            Defesa +=  Forca / 2;
             
         }
 
@@ -103,6 +107,8 @@ namespace Projeto_RPG
 
             if (critico == 20)
             {
+                Console.WriteLine($"{Nome} deu um acertou crítico");
+                Console.ReadKey();
                 dano += (int)(0.5 * (double)dano);
             }
 
