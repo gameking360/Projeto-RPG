@@ -1,6 +1,8 @@
 ﻿using Projeto_RPG.Geral;
 using Projeto_RPG.Personagens.Classes;
 using Projeto_RPG.Personagens.Habilidades;
+using Projeto_RPG.Personagens.Inimigo;
+using Projeto_RPG.Personagens.Habilidades.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -121,7 +123,17 @@ namespace Projeto_RPG
                 }while (op < 1 || op > num);
             Console.WriteLine($"{Nome} usou {Habilidades[op - 1].Nome}");
             inimigo.EfeitoSofrido = Habilidades[op - 1].Efeito;
-            inimigo.PontosVidaAtual -= Habilidades[op - 1].Dano;
+            inimigo.PontosVidaAtual -= CalcularDanoHabilidade(Habilidades[op - 1], (Inimigo) inimigo);
+        }
+
+        public virtual int CalcularDanoHabilidade(Habilidade habilidade, Inimigo inimigo)
+        {
+            if (inimigo.Tipo == habilidade.Fraqueza)
+            {
+                Console.WriteLine($"Vantagem elemental! {Nome} causa o dobro de dano!");
+                return habilidade.Dano * 2;
+            }
+            else return habilidade.Dano;
         }
 
         public virtual int CalcularDano(Personagem atacado)

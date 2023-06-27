@@ -77,11 +77,11 @@ namespace Projeto_RPG.Geral
                             break;
                     }
                 } while (op < 1 || op> 4);
-
-                AcaoInimigo();
+                if (Inimigo.PontosVidaAtual > 0) AcaoInimigo();
             }
             if (Player.PontosVidaAtual > 0)
             {
+                Console.Clear();
                 Console.WriteLine("Você venceu a batalha!");
                 Console.WriteLine($"Você ganhou: {Inimigo.RecompensaXP} exp" );
                 Player.ExpAtual = Player.ExpAtual + Inimigo.RecompensaXP;
