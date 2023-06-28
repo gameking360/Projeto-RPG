@@ -26,12 +26,12 @@ namespace Projeto_RPG
             {
                 Console.Clear();
                 Console.WriteLine("LEGENDS OF MUSTAFHAR!");
-                Console.WriteLine("=====================");
+                Console.WriteLine("|===================|");
                 Console.WriteLine("|  (1) Novo jogo    |");
                 Console.WriteLine("|  (2) Tutorial     |");
                 Console.WriteLine("|  (3) Créditos     |");
                 Console.WriteLine("|  (4) Sair do jogo |");
-                Console.WriteLine("=====================");
+                Console.WriteLine("|===================|");
                 switch (Console.ReadLine())
                 {
                     case "1": jogo.IniciarJogo();

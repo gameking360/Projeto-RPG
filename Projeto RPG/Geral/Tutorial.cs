@@ -17,13 +17,13 @@ namespace Projeto_RPG.Geral
             {
                 Console.Clear();
                 Console.WriteLine("        TUTORIAIS");
-                Console.WriteLine("=========================");
+                Console.WriteLine("|=======================|");
                 Console.WriteLine("| (1) Como jogar        |");
                 Console.WriteLine("| (2) Classes           |");
                 Console.WriteLine("| (3) Elementos/Efeitos |");
                 Console.WriteLine("| (4) Inimigos          |");
                 Console.WriteLine("| (5) Voltar            |");
-                Console.WriteLine("=========================");
+                Console.WriteLine("|=======================|");
                 switch (Console.ReadLine())
                 {
                     case "1": TutorialComoJogar();

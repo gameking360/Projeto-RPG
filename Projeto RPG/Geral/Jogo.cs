@@ -43,13 +43,13 @@ namespace Projeto_RPG
 
             do
             {
-                Console.Clear();
-                Console.WriteLine("         MENU         ");
-                Console.WriteLine("|===================|");
-                Console.WriteLine("|  1. Batalhar      |");
-                Console.WriteLine("|  2. Ver status    |");
-                Console.WriteLine("|  3. Sair (Menu Inicial)          |");
-                Console.WriteLine("|===================|");
+                Console.Clear(); 
+                Console.WriteLine("           MENU         ");
+                Console.WriteLine("|========================|");
+                Console.WriteLine("|  1. Batalhar           |");
+                Console.WriteLine("|  2. Ver status         |");
+                Console.WriteLine("|  3. Sair para o início |");
+                Console.WriteLine("|========================|");
                 switch (Console.ReadLine())
 
                 {

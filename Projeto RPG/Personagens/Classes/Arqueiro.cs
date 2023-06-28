@@ -20,9 +20,9 @@ namespace Projeto_RPG.Personagens.Classes
             PontosVidaMax = 90;
             PontosVidaAtual = PontosVidaMax;
             Forca = 5;
-            Defesa = 15;
+            Defesa = 20;
             Destreza = 30;
-            Habilidades.Add(new Habilidade("Flecha flamejante", Tipos.Fogo, Tipos.Gelo, Mundo.CriacaoEfeitos().Find(p => p.Nome == "Queimado"), Forca + 5));
+            Habilidades.Add(new Habilidade("Flecha flamejante", Tipos.Fogo, Tipos.Gelo, Mundo.CriacaoEfeitos().Find(p => p.Nome == "Queimado"), (Destreza/2) + 5));
         }
 
         public override void Atacar(Personagem inimigo)
@@ -71,10 +71,10 @@ namespace Projeto_RPG.Personagens.Classes
             if (ExpAtual >= 5 && ExpAtual < 35 && Nivel != 2)
             {
                 Nivel = 2;
-                PontosVidaMax += 10;
+                PontosVidaMax += 15;
                 Forca += 5;
-                Defesa += 3;
-                Destreza += 10;
+                Defesa += 10;
+                Destreza += 20;
 
                 Console.WriteLine($"{Nome} subiu para o nivel {Nivel} e recuperou toda a vida");
                 PontosVidaAtual = PontosVidaMax;
@@ -82,11 +82,11 @@ namespace Projeto_RPG.Personagens.Classes
             if (ExpAtual >= 35 && ExpAtual < 50 && Nivel != 3)
             {
                 Nivel = 3;
-                PontosVidaMax += 15;
+                PontosVidaMax += 25;
                 Forca += 5;
-                Defesa += 5;
-                Destreza += 10;
-                Habilidades.Add(new Habilidade("Flecha envenenada", Tipos.Grama, Tipos.Água, Mundo.CriacaoEfeitos().Find(p => p.Nome == "Envenenado"), Forca + 10));
+                Defesa += 15;
+                Destreza += 20;
+                Habilidades.Add(new Habilidade("Flecha envenenada", Tipos.Grama, Tipos.Água, Mundo.CriacaoEfeitos().Find(p => p.Nome == "Envenenado"), Destreza + 10));
 
                 Console.WriteLine($"{Nome} subiu para o nivel {Nivel} e recuperou toda a vida");
                 Console.WriteLine($"{Nome} desbloqueou a habilidade 'Flecha envenenada'!");
@@ -95,10 +95,10 @@ namespace Projeto_RPG.Personagens.Classes
             if (ExpAtual >= 50)
             {
                 Nivel = 4;
-                PontosVidaMax += 20;
+                PontosVidaMax += 30;
                 Forca += 7;
-                Defesa += 8;
-                Destreza += 10;
+                Defesa += 25;
+                Destreza += 40;
 
                 Console.WriteLine($"{Nome} subiu para o nivel {Nivel} e recuperou toda a vida");
                 PontosVidaAtual = PontosVidaMax;

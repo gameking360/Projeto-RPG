@@ -89,9 +89,9 @@ namespace Projeto_RPG.Personagens.Classes
             {
                 Nivel = 2;
                 PontosVidaMax += 5;
-                Forca += 1;
-                Defesa += 3;
-                PontosMagiaMax += 20;
+                Forca += 10;
+                Defesa += 15;
+                PontosMagiaMax += 30;
 
 
                 Console.WriteLine($"{Nome} subiu para o nível {Nivel} e recuperou toda a vida e mana");
@@ -102,8 +102,8 @@ namespace Projeto_RPG.Personagens.Classes
             {
                 Nivel = 3;
                 PontosVidaMax += 10;
-                Forca += 2;
-                Defesa += 5;
+                Forca += 15;
+                Defesa += 20;
                 PontosMagiaMax += 25;
 
                 Console.WriteLine($"{Nome} subiu para o nível {Nivel} e recuperou toda a vida e mana");
@@ -115,7 +115,7 @@ namespace Projeto_RPG.Personagens.Classes
                 Nivel = 4;
                 PontosVidaMax += 30;
                 Forca += 7;
-                Defesa += 8;
+                Defesa += 15;
 
                 PontosMagiaMax += 20;
 

@@ -86,9 +86,9 @@ namespace Projeto_RPG.Personagens.Classes
             if (ExpAtual >= 50)
             {
                 Nivel = 4;
-                PontosVidaMax += 30;
-                Forca += 15;
-                Defesa += 15;
+                PontosVidaMax += 45;
+                Forca += 18;
+                Defesa += 25;
 
                 Console.WriteLine($"{Nome} subiu para o nivel {Nivel} e recuperou toda a vida");
                 PontosVidaAtual = PontosVidaMax;
