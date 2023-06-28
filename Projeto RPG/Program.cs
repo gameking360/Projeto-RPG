@@ -44,8 +44,13 @@ namespace Projeto_RPG
                     case "4": flag = false;
                         Console.Clear();
                         Console.WriteLine("Fechando jogo...");
-                        Thread.Sleep(1500);
-                        
+                        Console.WriteLine("3...");
+                        Thread.Sleep(1000);
+                        Console.WriteLine("2...");
+                        Thread.Sleep(1000);
+                        Console.WriteLine("1...");
+                        Thread.Sleep(1000);
+                        Console.WriteLine("Tchau! :)");
                         break;
                     default: Console.Clear();
                         Console.WriteLine("Opção inválida! (Aperte qualquer tecla para continuar)");
