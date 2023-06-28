@@ -13,6 +13,8 @@ namespace Projeto_RPG.Personagens.Habilidades
 
         public Magia(string nome, Tipos tipo, Tipos fraqueza, Efeito efeito, int dano, int custo) : base(nome, tipo, fraqueza, efeito, dano)
         {
+            Tipo = tipo;
+            Fraqueza = fraqueza;
             Custo = custo;
         }
     }

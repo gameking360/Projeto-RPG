@@ -52,22 +52,22 @@ namespace Projeto_RPG.Personagens.Classes
                     if (PontosVidaAtual + magia.Dano > PontosVidaMax) PontosVidaAtual = PontosVidaMax;
                     PontosVidaAtual += magia.Dano;
                     PontosMagiaAtual -= magia.Custo;
-                    
                 }
                 else
                 {
-                    Inimigo.Inimigo inimigo = (Inimigo.Inimigo)alvo;
-                    if(inimigo.Tipo == magia.Fraqueza)
+                    Inimigo.Inimigo inimigo = (Inimigo.Inimigo) alvo;
+                    if (inimigo.Tipo == magia.Fraqueza)
                     {
-                        Console.WriteLine($"Você usa {magia.Nome}");
+                        Console.WriteLine($"Você usa {magia.Nome}!");
+                        Console.WriteLine($"Vantagem elemental! {Nome} causa o dobro de dano!");
                         inimigo.PontosVidaAtual -= magia.Dano * 2;
                     }
                     else
                     {
-                        Console.WriteLine($"Você usa {magia.Nome}");
+                        Console.WriteLine($"Você usa {magia.Nome}!");
                         inimigo.PontosVidaAtual -= magia.Dano;
                     }
-                    alvo.EfeitoSofrido = magia.Efeito;
+                    inimigo.EfeitoSofrido = magia.Efeito;
                     PontosMagiaAtual -= magia.Custo;
                 }
             }
@@ -93,8 +93,8 @@ namespace Projeto_RPG.Personagens.Classes
                 Defesa += 15;
                 PontosMagiaMax += 30;
 
-
                 Console.WriteLine($"{Nome} subiu para o nível {Nivel} e recuperou toda a vida e mana");
+                Console.WriteLine($"{Nome} desbloqueou novas magias!");
                 PontosVidaAtual = PontosVidaMax;
                 PontosMagiaAtual = PontosMagiaMax;
             }
@@ -107,10 +107,11 @@ namespace Projeto_RPG.Personagens.Classes
                 PontosMagiaMax += 25;
 
                 Console.WriteLine($"{Nome} subiu para o nível {Nivel} e recuperou toda a vida e mana");
+                Console.WriteLine($"{Nome} desbloqueou novas magias!");
                 PontosVidaAtual = PontosVidaMax;
                 PontosMagiaAtual= PontosMagiaMax;
             }
-            if (ExpAtual >= 50)
+            if (ExpAtual >= 50 && Nivel < 4)
             {
                 Nivel = 4;
                 PontosVidaMax += 30;
@@ -120,6 +121,7 @@ namespace Projeto_RPG.Personagens.Classes
                 PontosMagiaMax += 20;
 
                 Console.WriteLine($"{Nome} subiu para o nível {Nivel} e recuperou toda a vida e mana");
+                Console.WriteLine($"{Nome} desbloqueou uma nova magia!");
                 PontosVidaAtual = PontosVidaMax;
                 PontosMagiaAtual = PontosMagiaMax;
              }

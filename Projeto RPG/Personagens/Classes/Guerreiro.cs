@@ -81,6 +81,7 @@ namespace Projeto_RPG.Personagens.Classes
                 Habilidades.Add(new Habilidade("Espada Flamejante", Tipos.Fogo, Tipos.Gelo, Mundo.CriacaoEfeitos().Find (p => p.Nome == "Queimado") ,20));
 
                 Console.WriteLine($"{Nome} subiu para o nivel {Nivel} e recuperou toda a vida");
+                Console.WriteLine($"{Nome} desbloqueou a habilidade 'Espada Flamejante'!");
                 PontosVidaAtual = PontosVidaMax;
             }
             if (ExpAtual >= 50)

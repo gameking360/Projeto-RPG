@@ -29,6 +29,7 @@ namespace Projeto_RPG.Geral
             int defesaPadrao = Player.Defesa;
             Console.Clear();
             int op = 0;
+            int cont = 0;
             while (Inimigo.PontosVidaAtual > 0 && Player.PontosVidaAtual > 0)
             {
                 Player.Defesa = defesaPadrao;
@@ -77,7 +78,7 @@ namespace Projeto_RPG.Geral
                             break;
                     }
                 } while (op < 1 || op> 4);
-                if (Inimigo.PontosVidaAtual > 0) AcaoInimigo();
+                if (Inimigo.PontosVidaAtual > 0) cont = AcaoInimigo(cont);
             }
             if (Player.PontosVidaAtual > 0)
             {
@@ -93,16 +94,24 @@ namespace Projeto_RPG.Geral
             
         }
 
-        public void AcaoInimigo()
+        public int AcaoInimigo(int cont)
         {
-
-            Inimigo.VerEfeitos();
-            if(Inimigo.EfeitoSofrido != null &&Inimigo.EfeitoSofrido.Nome == "Congelado")
+            if(Inimigo.EfeitoSofrido != null)
             {
-                Console.WriteLine($"{Inimigo.Nome} está congelado");
-                return;
+                cont++;
+                if (cont == Inimigo.EfeitoSofrido.RodadasAfetadas + 1)
+                {
+                    cont = 0;
+                    Inimigo.EfeitoSofrido = null;
+                }
+                Inimigo.VerEfeitos();
+                if (Inimigo.EfeitoSofrido != null && Inimigo.EfeitoSofrido.Nome == "Congelado")
+                {
+                    Console.ReadKey();
+                    return cont;
+                }
             }
-
+            
             int acao = rand.Next(1, 2);
             switch (acao)
             {
@@ -113,6 +122,7 @@ namespace Projeto_RPG.Geral
                     Inimigo.Defender();
                     break;
             }
+            return cont;
         }
        
 
@@ -122,15 +132,15 @@ namespace Projeto_RPG.Geral
             {
             int x = 1;
             Mago m = (Mago)Player;
-            Console.WriteLine("Digite a magia a ser usada");
-            Console.WriteLine("====================");
+            Console.WriteLine("Digite o nome da magia a ser usada");
+            Console.WriteLine("======================");
 
             foreach (Magia me in m.Magias)
             {
                 Console.WriteLine($"{x} - {me.Nome} - {me.Custo}");
                 x++;
             }
-            Console.WriteLine("====================");
+            Console.WriteLine("======================");
 
             
                 string magia = Console.ReadLine().ToLower();
