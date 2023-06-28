@@ -107,7 +107,6 @@ namespace Projeto_RPG.Geral
 
             return Magia;
         }
-
        
     }
 }

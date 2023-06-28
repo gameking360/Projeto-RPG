@@ -84,7 +84,7 @@ namespace Projeto_RPG.Personagens.Classes
                 Console.WriteLine($"{Nome} desbloqueou a habilidade 'Espada Flamejante'!");
                 PontosVidaAtual = PontosVidaMax;
             }
-            if (ExpAtual >= 50)
+            if (ExpAtual >= 50 && Nivel != 4)
             {
                 Nivel = 4;
                 PontosVidaMax += 45;
