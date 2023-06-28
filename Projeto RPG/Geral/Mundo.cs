@@ -101,7 +101,7 @@ namespace Projeto_RPG.Geral
                 Magia.Add(new Magia("Bola de Fogo", Tipos.Fogo, Tipos.Gelo, Efeitos.Find(p => p.Nome == "Queimado"), 10, 10));
                 Magia.Add(new Magia("Piso de Gelo", Tipos.Gelo, Tipos.Eletricidade, Efeitos.Find(p => p.Nome == "Congelado"), 12, 20));
                 Magia.Add(new Magia("Bolha de Agua", Tipos.Água, Tipos.Fogo, Efeitos.Find(p => p.Nome == "Fraqueza"), 10, 25));
-                Magia.Add(new Magia("Magia de cura", Tipos.Grama, Tipos.Nulo, null, 0, 35));
+                Magia.Add(new Magia("Magia de cura", Tipos.Grama, Tipos.Nulo, null, 80, 35));
                 Magia.Add(new Magia("Relampagao", Tipos.Eletricidade, Tipos.Grama, null, 50 , 15));
             }
 

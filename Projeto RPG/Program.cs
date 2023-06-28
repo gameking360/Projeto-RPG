@@ -50,7 +50,6 @@ namespace Projeto_RPG
                         Thread.Sleep(1000);
                         Console.WriteLine("1...");
                         Thread.Sleep(1000);
-                        Console.WriteLine("Tchau! :)");
                         break;
                     default: Console.Clear();
                         Console.WriteLine("Opção inválida! (Aperte qualquer tecla para continuar)");
